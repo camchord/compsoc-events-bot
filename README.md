@@ -1,0 +1,1 @@
+This is my events bot for compsoc
