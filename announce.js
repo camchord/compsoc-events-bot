@@ -17,7 +17,7 @@ const announce = {
                         (event.link ? event.link + '\n\n' : '') +
                         event.description + '\n----------\n'
                     },
-                    '----------\n@here, the following events are happening in an hour or less!\n----------\n')
+                    '----------\n@everyone, the following events are happening in an hour or less!\n----------\n')
                     client.channels.cache.get(process.env.ANNOUNCEMENT_CHANNEL_ID).send(output);
                 }
             })
