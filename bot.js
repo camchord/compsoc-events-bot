@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-
-
 const schedule = require('node-schedule');
 const Discord = require('discord.js');
 const discordClient = new Discord.Client();
@@ -25,6 +23,9 @@ const deleteEventCommand = '!deleteEvent';
 const getEventCommand = '!getEvent';
 const updateEventCommand = '!updateEvent';
 const listEventsCommand = '!listEvents';
+const forceWeeklyUpdateCommand = '!forceWeeklyUpdate';
+const forceDailyUpdateCommand = '!forceDailyUpdate';
+const forceHourlyWarningCommand = '!forceHourlyWarning';
 
 discordClient.on('message', (message) => {
     if (message.channel.id === process.env.ADMIN_CHANNEL_ID) {
@@ -38,6 +39,12 @@ discordClient.on('message', (message) => {
             admin.deleteEvent(message, deleteEventCommand);
         } else if (message.content === listEventsCommand) {
             admin.listEvents(message);
+        } else if (message.content === forceWeeklyUpdateCommand) {
+            announce.getWeeklyEvents(discordClient);
+        } else if (message.content === forceDailyUpdateCommand) {
+            announce.getDailyEvents(discordClient);
+        } else if (message.content === forceHourlyWarningCommand) {
+            announce.getHourlyWarning(discordClient);
         }
     } 
 })
